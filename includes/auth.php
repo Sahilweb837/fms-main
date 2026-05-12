@@ -1,6 +1,11 @@
 <?php
 require_once __DIR__ . '/db.php';
 
+// Prevent Varnish and browser caching on Cloudways
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
+
 // ─── Redirect to login if not authenticated ───────────────────────
 if (!isset($_SESSION['user_id'])) {
     // Determine the correct login portal based on current path

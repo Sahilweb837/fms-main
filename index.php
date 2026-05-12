@@ -383,8 +383,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- Industry Selector -->
             <label class="form-label mt-2">2. Select Your Sector</label>
             <div class="industry-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="industry-tile" onclick="selectIndustry('school', this)"><i class="fas fa-school"></i><span>School ERP</span></div>
+                <div class="industry-tile" onclick="selectIndustry('college', this)"><i class="fas fa-university"></i><span>College ERP</span></div>
+                <div class="industry-tile" onclick="selectIndustry('restaurant', this)"><i class="fas fa-utensils"></i><span>Restaurant</span></div>
+                <div class="industry-tile" onclick="selectIndustry('hotel', this)"><i class="fas fa-hotel"></i><span>Hotel Mgmt</span></div>
+                <div class="industry-tile" onclick="selectIndustry('shop', this)"><i class="fas fa-store"></i><span>Shop POS</span></div>
+                <div class="industry-tile" onclick="selectIndustry('dispensary', this)"><i class="fas fa-clinic-medical"></i><span>Clinic Mgmt</span></div>
+                <div class="industry-tile" onclick="selectIndustry('inventory', this)"><i class="fas fa-boxes-stacked"></i><span>Inventory</span></div>
+                <div class="industry-tile" onclick="selectIndustry('company', this)"><i class="fas fa-building"></i><span>Company ERP</span></div>
                 <div class="industry-tile" onclick="selectIndustry('it_institution', this)"><i class="fas fa-laptop-code"></i><span>IT Institute</span></div>
-                <div class="industry-tile" onclick="selectIndustry('company', this)"><i class="fas fa-building"></i><span>Company</span></div>
+                <div class="industry-tile" onclick="selectIndustry('other', this)"><i class="fas fa-briefcase"></i><span>FMS Pro</span></div>
             </div>
 
             <!-- Credentials -->
