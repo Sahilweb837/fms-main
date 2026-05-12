@@ -1,19 +1,6 @@
 <?php
-// Secure and standardized session initialization with proxy support
+// Secure and standardized session initialization
 if (session_status() === PHP_SESSION_NONE) {
-    // Detect if we are on HTTPS (including via proxy)
-    $is_https = (
-        (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
-        (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) ||
-        (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
-    );
-
-    session_set_cookie_params([
-        'lifetime' => 86400 * 7, // 7 days persistence
-        'path' => '/',
-        'httponly' => true,
-        'samesite' => 'Lax'
-    ]);
     session_start();
 }
 
