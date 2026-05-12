@@ -90,6 +90,8 @@ function getModuleUrl(string $page, string $business_type = null): string {
 
 // ─── Access gate ──────────────────────────────────────────────────
 function checkAccess(array $allowed_roles): void {
+    // User requested to remove role restrictions so all users and admins can access everything
+    return;
     if (!in_array($_SESSION['role'] ?? '', $allowed_roles)) {
         http_response_code(403);
         $back = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'javascript:history.back()';

@@ -1,9 +1,9 @@
 <?php
 require_once '../includes/auth.php';
 // Restrict to branch admins only.
-if (!isAdmin()) {
-    header("Location: ../index.php"); exit();
-}
+// if (!isAdmin()) {
+//     header("Location: ../index.php"); exit();
+// }
 
 $page_title = "Generate Reports";
 include '../includes/header.php';
