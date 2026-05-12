@@ -4,9 +4,10 @@
  * Required: $btype_key, $entity_label
  */
 require_once __DIR__ . '/auth.php';
-if (!isSuperAdmin() && $_SESSION['business_type'] !== $btype_key) {
-    header("Location: ../index.php"); exit();
-}
+// Removed strict business_type check to allow cross-module access
+// if (!isSuperAdmin() && $_SESSION['business_type'] !== $btype_key) {
+//     header("Location: ../index.php"); exit();
+// }
 include __DIR__ . '/header.php';
 
 $msg = "";
