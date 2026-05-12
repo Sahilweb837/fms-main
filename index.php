@@ -133,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
         .ems-brand-title span {
-            color: #ff7b00;
+            color: #ff5532;
         }
 
         .ems-subtitle {
@@ -235,11 +235,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             top: 6px; left: 6px;
             height: calc(100% - 12px);
             width: calc(50% - 6px);
-            background: #ff7b00;
+            background: #ff5532;
             border-radius: 10px;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
-            box-shadow: 0 4px 12px rgba(255, 123, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 85, 50, 0.3);
         }
 
         /* Industry Tiles */
@@ -263,17 +263,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .industry-tile span { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
         
         .industry-tile:hover {
-            border-color: #ff7b00;
+            border-color: #ff5532;
             background: #fff8f1;
             transform: translateY(-2px);
         }
         .industry-tile.selected {
             background: #fff8f1;
-            border-color: #ff7b00;
-            color: #ff7b00;
-            box-shadow: 0 4px 12px rgba(255, 123, 0, 0.1);
+            border-color: #ff5532;
+            color: #ff5532;
+            box-shadow: 0 4px 12px rgba(255, 85, 50, 0.1);
         }
-        .industry-tile.selected i { color: #ff7b00; }
+        .industry-tile.selected i { color: #ff5532; }
 
         /* Form Inputs */
         .form-label {
@@ -289,10 +289,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .input-group-text { background: #f8fafc; border: none; color: #94a3b8; padding: 0 1.25rem; }
         .form-control { border: none; padding: 14px 1rem; font-size: 1rem; color: #1e293b; background: #fff; }
         .form-control:focus { box-shadow: none; }
-        .input-group:focus-within { border-color: #ff7b00; box-shadow: 0 0 0 3px rgba(255, 123, 0, 0.1); }
+        .input-group:focus-within { border-color: #ff5532; box-shadow: 0 0 0 3px rgba(255, 85, 50, 0.1); }
 
         .btn-login {
-            background: #ff7b00;
+            background: #ff5532;
             color: white;
             border: none;
             border-radius: 12px;
@@ -301,14 +301,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-weight: 700;
             width: 100%;
             transition: all 0.2s;
-            box-shadow: 0 8px 20px rgba(255, 123, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(255, 85, 50, 0.2);
             margin-top: 1rem;
             cursor: pointer;
         }
         .btn-login:hover {
-            background: #e66e00;
+            background: #e64a2a;
             transform: translateY(-1px);
-            box-shadow: 0 12px 24px rgba(255, 123, 0, 0.3);
+            box-shadow: 0 12px 24px rgba(255, 85, 50, 0.3);
         }
 
         .alert-danger {
@@ -430,20 +430,20 @@ function setRole(role) {
     
     if (role === 'admin') {
         slider.style.transform = 'translateX(100%)';
-        slider.style.background = '#ff7b00';
-        slider.style.boxShadow = '0 4px 12px rgba(255, 123, 0, 0.3)';
+        slider.style.background = '#ff5532';
+        slider.style.boxShadow = '0 4px 12px rgba(255, 85, 50, 0.3)';
         optAdmin.classList.add('active');
         optEmp.classList.remove('active');
-        document.querySelector('.btn-login').style.background = '#ff7b00';
-        document.querySelector('.btn-login').style.boxShadow = '0 8px 20px rgba(255, 123, 0, 0.25)';
+        document.querySelector('.btn-login').style.background = '#ff5532';
+        document.querySelector('.btn-login').style.boxShadow = '0 8px 20px rgba(255, 85, 50, 0.25)';
     } else {
         slider.style.transform = 'translateX(0)';
-        slider.style.background = '#ff7b00';
-        slider.style.boxShadow = '0 4px 12px rgba(255, 123, 0, 0.3)';
+        slider.style.background = '#ff5532';
+        slider.style.boxShadow = '0 4px 12px rgba(255, 85, 50, 0.3)';
         optEmp.classList.add('active');
         optAdmin.classList.remove('active');
-        document.querySelector('.btn-login').style.background = '#ff7b00';
-        document.querySelector('.btn-login').style.boxShadow = '0 8px 20px rgba(255, 123, 0, 0.25)';
+        document.querySelector('.btn-login').style.background = '#ff5532';
+        document.querySelector('.btn-login').style.boxShadow = '0 8px 20px rgba(255, 85, 50, 0.25)';
     }
 
 }

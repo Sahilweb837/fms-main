@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
         .brand-title span {
-            color: #ff7b00;
+            color: #ff5532;
         }
 
         .subtitle {
@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .pattern-bg {
             position: absolute;
             inset: 0;
-            background-image: radial-gradient(#ff7b0015 1px, transparent 1px);
+            background-image: radial-gradient(#ff553215 1px, transparent 1px);
             background-size: 30px 30px;
             z-index: 1;
         }
@@ -144,7 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             display: inline-flex;
             align-items: center;
             background: #fff8f1;
-            color: #ff7b00;
+            color: #ff5532;
             padding: 8px 16px;
             border-radius: 100px;
             font-size: 0.75rem;
@@ -152,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             text-transform: uppercase;
             letter-spacing: 1.5px;
             margin-bottom: 2rem;
-            border: 1px solid #ff7b0020;
+            border: 1px solid #ff553220;
         }
 
         .login-heading {
@@ -187,8 +187,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .input-group:focus-within {
-            border-color: #ff7b00;
-            box-shadow: 0 0 0 3px rgba(255, 123, 0, 0.1);
+            border-color: #ff5532;
+            box-shadow: 0 0 0 3px rgba(255, 85, 50, 0.1);
         }
 
         .input-group-text {
@@ -210,7 +210,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .form-control:focus { box-shadow: none; }
 
         .btn-admin {
-            background: #ff7b00;
+            background: #ff5532;
             color: white;
             border: none;
             border-radius: 12px;
@@ -224,14 +224,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 8px 20px rgba(255, 123, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(255, 85, 50, 0.2);
             cursor: pointer;
         }
 
         .btn-admin:hover {
-            background: #e66e00;
+            background: #e64a2a;
             transform: translateY(-1px);
-            box-shadow: 0 12px 24px rgba(255, 123, 0, 0.3);
+            box-shadow: 0 12px 24px rgba(255, 85, 50, 0.3);
         }
 
         .alert-error {

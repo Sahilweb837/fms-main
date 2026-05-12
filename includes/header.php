@@ -4,16 +4,16 @@ $btype         = $_SESSION['business_type'] ?? 'other';
 $prefix        = APP_URL . '/';
 
 $industry_colors = [
-    'school'     => ['primary' => '#ff7b00', 'name' => 'School ERP'],
-    'college'    => ['primary' => '#ff7b00', 'name' => 'College ERP'],
-    'dispensary' => ['primary' => '#ff7b00', 'name' => 'Clinic'],
-    'hotel'      => ['primary' => '#ff7b00', 'name' => 'Hotel'],
-    'shop'       => ['primary' => '#ff7b00', 'name' => 'Shop'],
-    'restaurant' => ['primary' => '#ff7b00', 'name' => 'Restaurant'],
-    'inventory'  => ['primary' => '#ff7b00', 'name' => 'Inventory'],
-    'company'    => ['primary' => '#ff7b00', 'name' => 'Company'],
-    'it_institution' => ['primary' => '#ff7b00', 'name' => 'IT Institution'],
-    'other'      => ['primary' => '#ff7b00', 'name' => 'FMS Pro'],
+    'school'     => ['primary' => '#ff5532', 'name' => 'School ERP'],
+    'college'    => ['primary' => '#ff5532', 'name' => 'College ERP'],
+    'dispensary' => ['primary' => '#ff5532', 'name' => 'Clinic'],
+    'hotel'      => ['primary' => '#ff5532', 'name' => 'Hotel'],
+    'shop'       => ['primary' => '#ff5532', 'name' => 'Shop'],
+    'restaurant' => ['primary' => '#ff5532', 'name' => 'Restaurant'],
+    'inventory'  => ['primary' => '#ff5532', 'name' => 'Inventory'],
+    'company'    => ['primary' => '#ff5532', 'name' => 'Company'],
+    'it_institution' => ['primary' => '#ff5532', 'name' => 'IT Institution'],
+    'other'      => ['primary' => '#ff5532', 'name' => 'FMS Pro'],
 ];
 
 $ic     = $industry_colors[$btype] ?? $industry_colors['other'];
@@ -47,15 +47,15 @@ list($r,$g,$b) = sscanf($accent, "#%02x%02x%02x");
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
     <style>
         :root {
-            --primary: #ff7b00;
-            --primary-hover: #e66e00;
-            --primary-light: #fff2e6;
-            --first-color: #ff7b00;
-            --first-color-light: #fff2e6;
+            --primary: #ff5532;
+            --primary-hover: #e64a2a;
+            --primary-light: #fff2f0;
+            --first-color: #ff5532;
+            --first-color-light: #fff2f0;
             --bg-body: #f8f9fc;
             --bg-card: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
+            --text-main: #111;
+            --text-muted: #575757;
             --border-color: #e2e8f0;
             --header-bg: rgba(255, 255, 255, 0.8);
         }

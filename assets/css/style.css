@@ -1,20 +1,32 @@
+/* GOOGLE FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
 :root {
-    --primary: #ff7b00;
-    --primary-hover: #e66e00;
-    --primary-light: #fff2e6;
-    --first-color: #ff7b00;
-    --first-color-light: #fff2e6;
-    --secondary: #64748b;
+    --header-height: 3.5rem;
+    --first-color: #ff5532;
+    --second-color: #575757;
+    --text-color: #111;
+    --body-color: #fff;
+    --shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+    --z-tooltip: 10;
+    --z-fixed: 100;
+
+    --primary: #ff5532;
+    --primary-hover: #e64a2a;
+    --primary-light: #fff2f0;
+    --first-color-light: #fff2f0;
+    --secondary: #575757;
     --bg-body: #f8f9fc;
     --bg-card: #ffffff;
-    --text-main: #1e293b;
-    --text-muted: #64748b;
+    --text-main: #111;
+    --text-muted: #575757;
     --border-color: #e2e8f0;
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     
-    --header-height: 70px;
     --sidebar-width: 260px;
 }
 
