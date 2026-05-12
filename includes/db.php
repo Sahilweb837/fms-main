@@ -27,7 +27,7 @@ if (!defined('APP_URL')) {
     $host = $_SERVER['HTTP_HOST'];
     $script = $_SERVER['SCRIPT_NAME'];
     $dir = str_replace('\\', '/', dirname($script));
-    $base_dir = preg_replace('/(\/admin|\/school|\/college|\/it_institution|\/pages|\/includes|\/staff)$/', '', $dir);
+    $base_dir = preg_replace('/(\/admin|\/school|\/college|\/it_institution|\/dispensary|\/hotel|\/shop|\/restaurant|\/inventory|\/company|\/pages|\/includes|\/staff)$/', '', $dir);
     $base_dir = rtrim($base_dir, '/');
     define('APP_URL', $protocol . "://" . $host . $base_dir);
 }

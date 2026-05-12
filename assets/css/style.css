@@ -2,6 +2,8 @@
     --primary: #ff7b00;
     --primary-hover: #e66e00;
     --primary-light: #fff2e6;
+    --first-color: #ff7b00;
+    --first-color-light: #fff2e6;
     --secondary: #64748b;
     --bg-body: #f8f9fc;
     --bg-card: #ffffff;
@@ -56,14 +58,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Cards */
-.card, .glass-card, .HUD-card {
+.card, .glass-card, .HUD-card, .metric-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 8px;
     box-shadow: var(--shadow-sm);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.icon-box {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card:hover {
@@ -211,5 +222,4 @@ h1, h2, h3, h4, h5, h6 {
         transform: translateY(0);
     }
 }
-
 

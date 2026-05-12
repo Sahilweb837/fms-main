@@ -22,6 +22,12 @@ $icfg = $industry_config[$btype] ?? $industry_config['other'];
 
 // Determine path prefix
 $prefix = APP_URL . '/';
+$panel_module = function_exists('getPanelModule') ? getPanelModule($btype) : 'pages';
+$dashboard_url = function_exists('getDashboardUrl') ? getDashboardUrl($btype) : $prefix . 'pages/dashboard.php';
+$members_url = function_exists('getModuleUrl') ? getModuleUrl('members.php', $btype) : $prefix . 'pages/students.php';
+$payments_url = function_exists('getModuleUrl') ? getModuleUrl('payments.php', $btype) : $prefix . 'pages/fees.php';
+$users_url = function_exists('getModuleUrl') ? getModuleUrl('users.php', $btype) : $prefix . 'pages/users.php';
+$courses_url = function_exists('getModuleUrl') ? getModuleUrl('courses.php', $btype) : $prefix . 'pages/courses.php';
 
 // User initials for avatar
 $uname = $_SESSION['full_name'] ?? $_SESSION['username'] ?? 'U';
@@ -91,26 +97,26 @@ $role_label = ucwords(str_replace('_', ' ', $role));
 
         <?php /* ── BRANCH ADMIN LINKS ── */ elseif ($role === 'admin'): ?>
         <div class="nav-section-label"><?php echo $icfg['label']; ?></div>
-        <?php if($btype == 'other'): ?>
-        <a href="<?php echo $prefix; ?>pages/dashboard.php" class="nav-link-item <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">
+        <?php if($panel_module == 'pages'): ?>
+        <a href="<?php echo $dashboard_url; ?>" class="nav-link-item <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">
             <div class="nav-icon"><i class="fas fa-gauge-high"></i></div>
             <span>Dashboard</span>
         </a>
-        <a href="<?php echo $prefix; ?>pages/students.php" class="nav-link-item <?php echo ($current_page == 'students.php') ? 'active' : ''; ?>">
+        <a href="<?php echo $members_url; ?>" class="nav-link-item <?php echo ($current_page == 'students.php') ? 'active' : ''; ?>">
             <div class="nav-icon"><i class="fas fa-users"></i></div>
             <span>Clients</span>
         </a>
-        <a href="<?php echo $prefix; ?>pages/fees.php" class="nav-link-item <?php echo ($current_page == 'fees.php') ? 'active' : ''; ?>">
+        <a href="<?php echo $payments_url; ?>" class="nav-link-item <?php echo ($current_page == 'fees.php') ? 'active' : ''; ?>">
             <div class="nav-icon"><i class="fas fa-wallet"></i></div>
             <span>Payments</span>
         </a>
         <div class="nav-section-label">Administration</div>
         <?php $lc = (isset($trial_expired) && $trial_expired) ? 'pro-locked' : ''; ?>
-        <a href="<?php echo $prefix; ?>pages/users.php" class="nav-link-item <?php echo ($current_page == 'users.php') ? 'active ' : ''; echo $lc; ?>">
+        <a href="<?php echo $users_url; ?>" class="nav-link-item <?php echo ($current_page == 'users.php') ? 'active ' : ''; echo $lc; ?>">
             <div class="nav-icon"><i class="fas fa-user-tie"></i></div>
             <span>My Staff</span>
         </a>
-        <a href="<?php echo $prefix; ?>pages/courses.php" class="nav-link-item <?php echo ($current_page == 'courses.php') ? 'active ' : ''; echo $lc; ?>">
+        <a href="<?php echo $courses_url; ?>" class="nav-link-item <?php echo ($current_page == 'courses.php') ? 'active ' : ''; echo $lc; ?>">
             <div class="nav-icon"><i class="fas fa-book-open"></i></div>
             <span>Courses/Services</span>
         </a>
@@ -127,25 +133,25 @@ $role_label = ucwords(str_replace('_', ' ', $role));
             <span>Reports</span>
         </a>
         <?php else: ?>
-        <a href="<?php echo $prefix . $btype; ?>/dashboard.php" class="nav-link-item <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">
+        <a href="<?php echo $dashboard_url; ?>" class="nav-link-item <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">
             <div class="nav-icon"><i class="fas fa-gauge-high"></i></div>
             <span>Dashboard</span>
         </a>
-        <a href="<?php echo $prefix . $btype; ?>/members.php" class="nav-link-item <?php echo ($current_page == 'members.php') ? 'active' : ''; ?>">
+        <a href="<?php echo $members_url; ?>" class="nav-link-item <?php echo ($current_page == 'members.php') ? 'active' : ''; ?>">
             <div class="nav-icon"><i class="fas fa-users"></i></div>
             <span><?php echo $icfg['entity']; ?></span>
         </a>
-        <a href="<?php echo $prefix . $btype; ?>/payments.php" class="nav-link-item <?php echo ($current_page == 'payments.php') ? 'active' : ''; ?>">
+        <a href="<?php echo $payments_url; ?>" class="nav-link-item <?php echo ($current_page == 'payments.php') ? 'active' : ''; ?>">
             <div class="nav-icon"><i class="fas fa-wallet"></i></div>
             <span>Payments</span>
         </a>
         <div class="nav-section-label">Administration</div>
         <?php $lc = (isset($trial_expired) && $trial_expired) ? 'pro-locked' : ''; ?>
-        <a href="<?php echo $prefix . $btype; ?>/users.php" class="nav-link-item <?php echo ($current_page == 'users.php') ? 'active ' : ''; echo $lc; ?>">
+        <a href="<?php echo $users_url; ?>" class="nav-link-item <?php echo ($current_page == 'users.php') ? 'active ' : ''; echo $lc; ?>">
             <div class="nav-icon"><i class="fas fa-user-tie"></i></div>
             <span>My Staff</span>
         </a>
-        <a href="<?php echo $prefix . $btype; ?>/courses.php" class="nav-link-item <?php echo ($current_page == 'courses.php') ? 'active ' : ''; echo $lc; ?>">
+        <a href="<?php echo $courses_url; ?>" class="nav-link-item <?php echo ($current_page == 'courses.php') ? 'active ' : ''; echo $lc; ?>">
             <div class="nav-icon"><i class="fas fa-book-open"></i></div>
             <span><?php echo in_array($btype, ['restaurant','hotel']) ? 'Services/Menus' : (($btype == 'shop') ? 'Products' : 'Courses'); ?></span>
         </a>
@@ -165,16 +171,16 @@ $role_label = ucwords(str_replace('_', ' ', $role));
 
         <?php /* ── EMPLOYEE LINKS ── */ else: ?>
         <div class="nav-section-label">My Panel</div>
-        <?php if($btype == 'other'): ?>
-        <a href="<?php echo $prefix; ?>pages/dashboard.php" class="nav-link-item <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">
+        <?php if($panel_module == 'pages'): ?>
+        <a href="<?php echo $dashboard_url; ?>" class="nav-link-item <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">
             <div class="nav-icon"><i class="fas fa-gauge-high"></i></div>
             <span>Dashboard</span>
         </a>
-        <a href="<?php echo $prefix; ?>pages/students.php" class="nav-link-item <?php echo ($current_page == 'students.php') ? 'active' : ''; ?>">
+        <a href="<?php echo $members_url; ?>" class="nav-link-item <?php echo ($current_page == 'students.php') ? 'active' : ''; ?>">
             <div class="nav-icon"><i class="fas fa-users"></i></div>
             <span>Clients</span>
         </a>
-        <a href="<?php echo $prefix; ?>pages/fees.php" class="nav-link-item <?php echo ($current_page == 'fees.php') ? 'active' : ''; ?>">
+        <a href="<?php echo $payments_url; ?>" class="nav-link-item <?php echo ($current_page == 'fees.php') ? 'active' : ''; ?>">
             <div class="nav-icon"><i class="fas fa-wallet"></i></div>
             <span>Collect Payment</span>
         </a>
@@ -183,15 +189,15 @@ $role_label = ucwords(str_replace('_', ' ', $role));
             <span>Attendance</span>
         </a>
         <?php else: ?>
-        <a href="<?php echo $prefix . $btype; ?>/dashboard.php" class="nav-link-item <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">
+        <a href="<?php echo $dashboard_url; ?>" class="nav-link-item <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">
             <div class="nav-icon"><i class="fas fa-gauge-high"></i></div>
             <span>Dashboard</span>
         </a>
-        <a href="<?php echo $prefix . $btype; ?>/members.php" class="nav-link-item <?php echo ($current_page == 'members.php') ? 'active' : ''; ?>">
+        <a href="<?php echo $members_url; ?>" class="nav-link-item <?php echo ($current_page == 'members.php') ? 'active' : ''; ?>">
             <div class="nav-icon"><i class="fas fa-users"></i></div>
             <span><?php echo $icfg['entity']; ?></span>
         </a>
-        <a href="<?php echo $prefix . $btype; ?>/payments.php" class="nav-link-item <?php echo ($current_page == 'payments.php') ? 'active' : ''; ?>">
+        <a href="<?php echo $payments_url; ?>" class="nav-link-item <?php echo ($current_page == 'payments.php') ? 'active' : ''; ?>">
             <div class="nav-icon"><i class="fas fa-wallet"></i></div>
             <span>Collect Payment</span>
         </a>
@@ -385,4 +391,3 @@ $role_label = ucwords(str_replace('_', ' ', $role));
     }
 }
 </style>
-

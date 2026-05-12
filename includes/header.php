@@ -1,6 +1,7 @@
 <?php
 $current_page  = basename($_SERVER['PHP_SELF']);
 $btype         = $_SESSION['business_type'] ?? 'other';
+$prefix        = APP_URL . '/';
 
 $industry_colors = [
     'school'     => ['primary' => '#ff7b00', 'name' => 'School ERP'],
@@ -49,6 +50,8 @@ list($r,$g,$b) = sscanf($accent, "#%02x%02x%02x");
             --primary: #ff7b00;
             --primary-hover: #e66e00;
             --primary-light: #fff2e6;
+            --first-color: #ff7b00;
+            --first-color-light: #fff2e6;
             --bg-body: #f8f9fc;
             --bg-card: #ffffff;
             --text-main: #1e293b;
@@ -76,11 +79,20 @@ list($r,$g,$b) = sscanf($accent, "#%02x%02x%02x");
             align-items: center;
         }
 
-        .glass-card, .card { 
+        .glass-card, .card, .metric-card { 
             background: var(--bg-card); 
             border: 1px solid var(--border-color); 
-            border-radius: 12px; 
+            border-radius: 8px; 
             box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+        }
+
+        .icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Color overrides */
@@ -220,4 +232,3 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <?php endif; ?>
-

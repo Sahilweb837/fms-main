@@ -4,28 +4,22 @@ header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
 header("Pragma: no-cache"); // HTTP 1.0.
 header("Expires: 0"); // Proxies.
 
+function panelPathForIndustry(string $business_type): string {
+    $business_type = trim($business_type, '/');
+    if ($business_type !== '' && is_file(__DIR__ . "/{$business_type}/dashboard.php")) {
+        return "{$business_type}/dashboard.php";
+    }
+    return 'pages/dashboard.php';
+}
+
 // If already logged in, redirect properly based on role
 if (isset($_SESSION['user_id'])) {
     $r = $_SESSION['role'] ?? '';
     $t = $_SESSION['business_type'] ?? 'other';
-    $panel_map = [
-        'school'         => APP_URL . '/school/dashboard.php',
-        'college'        => APP_URL . '/college/dashboard.php',
-        'it_institution' => APP_URL . '/it_institution/dashboard.php',
-        'dispensary'     => APP_URL . '/dispensary/dashboard.php',
-        'hotel'          => APP_URL . '/hotel/dashboard.php',
-        'shop'           => APP_URL . '/shop/dashboard.php',
-        'restaurant'     => APP_URL . '/restaurant/dashboard.php',
-        'inventory'      => APP_URL . '/inventory/dashboard.php',
-        'company'        => APP_URL . '/company/dashboard.php',
-        'other'          => APP_URL . '/pages/dashboard.php',
-    ];
     if ($r == 'super_admin') {
         header("Location: " . APP_URL . "/admin/index.php"); exit();
-    } else if (isset($panel_map[$t])) {
-        header("Location: " . $panel_map[$t]); exit();
     } else {
-        header("Location: " . APP_URL . "/pages/dashboard.php"); exit();
+        header("Location: " . APP_URL . "/" . panelPathForIndustry($t)); exit();
     }
 }
 
@@ -84,24 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     logActivity($conn, $row['id'], "Login", "Logged in via " . ucfirst($selected_industry) . " portal.");
 
-                    $panel_map = [
-                        'school'         => 'school/dashboard.php',
-                        'college'        => 'college/dashboard.php',
-                        'it_institution' => 'it_institution/dashboard.php',
-                        'dispensary'     => 'dispensary/dashboard.php',
-                        'hotel'          => 'hotel/dashboard.php',
-                        'shop'           => 'shop/dashboard.php',
-                        'restaurant'     => 'restaurant/dashboard.php',
-                        'inventory'      => 'inventory/dashboard.php',
-                        'company'        => 'company/dashboard.php',
-                        'other'          => 'pages/dashboard.php',
-                    ];
-
-                    if (isset($panel_map[$actual_industry])) {
-                        header("Location: " . $panel_map[$actual_industry]);
-                    } else {
-                        header("Location: pages/dashboard.php");
-                    }
+                    header("Location: " . panelPathForIndustry($actual_industry));
                     exit();
                 }
             } else {

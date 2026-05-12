@@ -48,6 +48,41 @@ function canManageUsers(): bool {
     return isset($_SESSION['role']) && in_array($_SESSION['role'], ['super_admin', 'admin']);
 }
 
+function moduleExists(string $module): bool {
+    $module = trim($module, '/');
+    if ($module === '') return false;
+    return is_file(__DIR__ . "/../{$module}/dashboard.php");
+}
+
+function getPanelModule(string $business_type = null): string {
+    $business_type = $business_type ?: ($_SESSION['business_type'] ?? 'other');
+    return moduleExists($business_type) ? $business_type : 'pages';
+}
+
+function getDashboardUrl(string $business_type = null): string {
+    $module = getPanelModule($business_type);
+    return APP_URL . "/{$module}/dashboard.php";
+}
+
+function getModuleUrl(string $page, string $business_type = null): string {
+    $module = getPanelModule($business_type);
+    $page = ltrim($page, '/');
+
+    if ($module === 'pages') {
+        if ($page === 'users.php') {
+            return APP_URL . "/admin/users.php";
+        }
+
+        $fallbacks = [
+            'members.php'  => 'students.php',
+            'payments.php' => 'fees.php',
+        ];
+        $page = $fallbacks[$page] ?? $page;
+    }
+
+    return APP_URL . "/{$module}/{$page}";
+}
+
 // ─── Access gate ──────────────────────────────────────────────────
 function checkAccess(array $allowed_roles): void {
     if (!in_array($_SESSION['role'] ?? '', $allowed_roles)) {
