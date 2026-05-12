@@ -6,18 +6,13 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (!defined('APP_URL')) {
-    $is_https = (
-        (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
-        (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) ||
-        (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
-    );
-    $protocol = $is_https ? "https" : "http";
-    $host = $_SERVER['HTTP_HOST'];
     $script = $_SERVER['SCRIPT_NAME'];
     $dir = str_replace('\\', '/', dirname($script));
     $base_dir = preg_replace('/(\/admin|\/school|\/college|\/it_institution|\/dispensary|\/hotel|\/shop|\/restaurant|\/inventory|\/company|\/pages|\/includes|\/staff)$/', '', $dir);
     $base_dir = rtrim($base_dir, '/');
-    define('APP_URL', $protocol . "://" . $host . $base_dir);
+    
+    // Use absolute path to avoid HTTP/HTTPS protocol mismatches caused by Cloudways proxies
+    define('APP_URL', $base_dir);
 }
 $host = "localhost";
 $user = "mhqhxuaasp";
