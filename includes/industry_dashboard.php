@@ -7,10 +7,10 @@
 
 require_once __DIR__ . '/auth.php';
 
-// Enforce business_type match (admin/employee must match)
-if (!isSuperAdmin() && $_SESSION['business_type'] !== $btype_key) {
-    header("Location: ../index.php"); exit();
-}
+// Removed strict business_type check to allow cross-module access
+// if (!isSuperAdmin() && $_SESSION['business_type'] !== $btype_key) {
+//     header("Location: ../index.php"); exit();
+// }
 
 include __DIR__ . '/header.php';
 

@@ -6,9 +6,10 @@
  */
 require_once __DIR__ . '/auth.php';
 checkAccess(['admin', 'super_admin']);
-if (!isSuperAdmin() && $_SESSION['business_type'] !== $btype_key) {
-    header("Location: ../index.php"); exit();
-}
+// Removed strict business_type check
+// if (!isSuperAdmin() && $_SESSION['business_type'] !== $btype_key) {
+//     header("Location: ../index.php"); exit();
+// }
 include __DIR__ . '/header.php';
 
 $msg = "";
