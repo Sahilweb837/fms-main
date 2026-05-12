@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_set_cookie_params(0, '/');
     session_start();
 }
-             
+
 if (!defined('APP_URL')) {
     $script = $_SERVER['SCRIPT_NAME'];
     $dir = str_replace('\\', '/', dirname($script));
